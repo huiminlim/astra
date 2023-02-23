@@ -34,9 +34,9 @@ namespace Example
                     new Rect(0, 0, bitmapSource.PixelWidth, bitmapSource.PixelHeight)
                     );
                 drawingContext.DrawRectangle(
-                    Brushes.Red,
                     null,
-                    new Rect(200, 200, 150, 100)
+                    new Pen(Brushes.Red, 20),
+                    new Rect(200, 200, 400, 400)
                     );
             }
 
