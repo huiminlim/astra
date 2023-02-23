@@ -26,16 +26,29 @@ namespace Example
 
             Uri uri = new Uri("C:\\Users\\admin\\Desktop\\astra\\bliss.jpg");
             BitmapImage bitmapSource = new BitmapImage(uri);
-            DrawingVisual dv = new DrawingVisual();
-            using (DrawingContext dc = dv.RenderOpen())
+            DrawingVisual drawingVisual = new DrawingVisual();
+            using (DrawingContext drawingContext = drawingVisual.RenderOpen())
             {
-                dc.DrawImage(bitmapSource, new Rect(0, 0, bitmapSource.PixelWidth, bitmapSource.PixelHeight));
-                dc.DrawRectangle(Brushes.Red, null, new Rect(200, 200, 150, 100));
+                drawingContext.DrawImage(
+                    bitmapSource,
+                    new Rect(0, 0, bitmapSource.PixelWidth, bitmapSource.PixelHeight)
+                    );
+                drawingContext.DrawRectangle(
+                    Brushes.Red,
+                    null,
+                    new Rect(200, 200, 150, 100)
+                    );
             }
 
-            RenderTargetBitmap rtb = new RenderTargetBitmap(bitmapSource.PixelWidth, bitmapSource.PixelHeight, 96, 96, PixelFormats.Pbgra32);
-            rtb.Render(dv);
-            ImageScreen.Source = rtb;
+            RenderTargetBitmap renderTargetBitmap = new RenderTargetBitmap(
+                bitmapSource.PixelWidth,
+                bitmapSource.PixelHeight,
+                96,
+                96,
+                PixelFormats.Pbgra32
+                );
+            renderTargetBitmap.Render(drawingVisual);
+            ImageScreen.Source = renderTargetBitmap;
         }
     }
 }
