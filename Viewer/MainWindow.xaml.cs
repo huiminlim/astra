@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Configuration;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -24,7 +26,7 @@ namespace Example
         {
             InitializeComponent();
 
-            Uri uri = new Uri("C:\\Users\\admin\\Desktop\\astra\\bliss.jpg");
+            Uri uri = new Uri(Viewer.Properties.Settings.Default.AssetsPath + "\\bliss.jpg");
             BitmapImage bitmapSource = new BitmapImage(uri);
             DrawingVisual drawingVisual = new DrawingVisual();
             using (DrawingContext drawingContext = drawingVisual.RenderOpen())

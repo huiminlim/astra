@@ -11,36 +11,36 @@ include( CSharpUtilities )
 
 add_executable(
     Astra
-    App.config
-    App.xaml
-    App.xaml.cs
-    MainWindow.xaml
-    MainWindow.xaml.cs
-    Properties/AssemblyInfo.cs
-    Properties/Resources.Designer.cs
-    Properties/Resources.resx
-    Properties/Settings.Designer.cs
-    Properties/Settings.settings
+    Viewer/App.config
+    Viewer/App.xaml
+    Viewer/App.xaml.cs
+    Viewer/MainWindow.xaml
+    Viewer/MainWindow.xaml.cs
+    Viewer/Properties/AssemblyInfo.cs
+    Viewer/Properties/Resources.Designer.cs
+    Viewer/Properties/Resources.resx
+    Viewer/Properties/Settings.Designer.cs
+    Viewer/Properties/Settings.settings
 )
 
 csharp_set_designer_cs_properties(
-    Properties/AssemblyInfo.cs
-    Properties/Resources.Designer.cs
-    Properties/Resources.resx
-    Properties/Settings.Designer.cs
-    Properties/Settings.settings
+    Viewer/Properties/AssemblyInfo.cs
+    Viewer/Properties/Resources.Designer.cs
+    Viewer/Properties/Resources.resx
+    Viewer/Properties/Settings.Designer.cs
+    Viewer/Properties/Settings.settings
 )
 
 csharp_set_xaml_cs_properties(
-    App.xaml
-    App.xaml.cs
-    MainWindow.xaml
-    MainWindow.xaml.cs
+    Viewer/App.xaml
+    Viewer/App.xaml.cs
+    Viewer/MainWindow.xaml
+    Viewer/MainWindow.xaml.cs
 )
 
 set_property(
     SOURCE
-    App.xaml
+    Viewer/App.xaml
     PROPERTY
     VS_XAML_TYPE "ApplicationDefinition"
 )
