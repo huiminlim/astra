@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Example"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-
-    </Grid>
+    <StackPanel Name="MainStack" Orientation="Vertical">
+        <Image Name="ImageScreen" Margin="10,10,10,10"></Image>
+    </StackPanel>
 </Window>

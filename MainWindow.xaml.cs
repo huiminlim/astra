@@ -23,6 +23,10 @@ namespace Example
         public MainWindow()
         {
             InitializeComponent();
+
+            Uri uri = new Uri("C:\\Users\\admin\\Desktop\\astra\\bliss.jpg");
+            BitmapImage bitmapSource = new BitmapImage(uri);
+            ImageScreen.Source = bitmapSource;
         }
     }
 }
