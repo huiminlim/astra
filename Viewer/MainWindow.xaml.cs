@@ -88,6 +88,7 @@ namespace Example
 
         private void IncrementButton_Click(object sender, RoutedEventArgs e)
         {
+            custdata.Clear();
             foreach (Customer customer in DataPanel.ItemsSource)
             {
                 customer.Age = customer.Age + 1;
