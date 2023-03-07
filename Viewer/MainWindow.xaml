@@ -4,8 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <StackPanel Name="MainStack" Orientation="Vertical">
-        <Image Name="ImageScreen" Margin="10,10,10,10"></Image>
+        Title="MainWindow" 
+        HorizontalAlignment="Left"
+        VerticalAlignment="Top" 
+        Width="800" 
+        Height="400">
+    <StackPanel Name="MainStack" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" >
+        <StackPanel Name="SidePanel" 
+                    Orientation="Vertical"
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top">
+            <Image Name="ImageScreen" 
+                   Margin="10,10,10,10" 
+                   Height="350" 
+                   Width="525">
+            </Image>
+        </StackPanel>
+
+        <DataGrid Name="DataPanel"
+                  ItemsSource="{Binding Customer}"
+                  AutoGenerateColumns="True">
+        </DataGrid>
     </StackPanel>
 </Window>
