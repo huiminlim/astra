@@ -1,31 +1,54 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Linq;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Example
 {
+    //Defines the customer object
+    public class Customer : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public bool IsMember { get; set; }
+        private int age;
+        public int Age
+        {
+            get { return age; }
+            set
+            {
+                age = value;
+                OnPropertyChanged("Age");
+            }
+        }
+        public Customer(string firstName, string lastName, int age, bool isMember)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Age = age;
+            IsMember = isMember;
+        }
+
+        // Create the OnPropertyChanged method to raise the event 
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
+        }
+    }
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {//Defines the customer object
-        public class Customer
-        {
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-            public bool IsMember { get; set; }
-            public int Age { get; set; }
-            public Customer(string firstName, string lastName, int age, bool isMember)
-            {
-                FirstName = firstName;
-                LastName = lastName;
-                Age = age;
-                IsMember = isMember;
-            }
-        }
+    {
+        public ObservableCollection<Customer> custdata = new ObservableCollection<Customer>();
 
         public MainWindow()
         {
@@ -58,9 +81,17 @@ namespace Example
             ImageScreen.Source = renderTargetBitmap;
 
             //Set the DataGrid's DataContext to be a filled DataTable
-            ObservableCollection<Customer> custdata = new ObservableCollection<Customer>();
             DataPanel.ItemsSource = custdata;
             custdata.Add(new Customer("Alice", "Chan", 10, true));
+            custdata.Add(new Customer("Alice", "Tan", 20, true));
+        }
+
+        private void IncrementButton_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (Customer customer in DataPanel.ItemsSource)
+            {
+                customer.Age = customer.Age + 1;
+            }
             custdata.Add(new Customer("Alice", "Tan", 20, true));
         }
     }

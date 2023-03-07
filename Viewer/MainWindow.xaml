@@ -7,7 +7,7 @@
         Title="MainWindow" 
         HorizontalAlignment="Left"
         VerticalAlignment="Top" 
-        Width="800" 
+        Width="850" 
         Height="400">
     <StackPanel Name="MainStack" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" >
         <StackPanel Name="SidePanel" 
@@ -20,10 +20,13 @@
                    Width="525">
             </Image>
         </StackPanel>
-
-        <DataGrid Name="DataPanel"
+        <StackPanel Name="Side" 
+                    Orientation="Vertical" Margin="10,10,10,10">
+            <Button Name="IncrementButton" Click="IncrementButton_Click">Press Here</Button>
+            <DataGrid Name="DataPanel"
                   ItemsSource="{Binding Customer}"
                   AutoGenerateColumns="True">
-        </DataGrid>
+            </DataGrid>
+        </StackPanel>
     </StackPanel>
 </Window>
